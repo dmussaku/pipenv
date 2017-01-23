@@ -19,8 +19,9 @@ __version__ = '0.2.4'
 
 project = Project()
 
-USE_TWO=False
-USE_THREE=False
+USE_TWO = False
+USE_THREE = False
+PYTHON_VERSION = None
 
 def ensure_latest_pip():
     """Updates pip to the latest version."""
@@ -128,9 +129,10 @@ def do_create_virtualenv():
     if USE_TWO:
         cmd = cmd + ['-p', 'python2']
     if USE_THREE:
-        cmd = cmd + ['-p', 'python3']
+        cmd = cmd + ['-p', 'python3.6']
 
     # Actually create the virtualenv.
+    print cmd
     c = delegator.run(cmd, block=False)
     click.echo(crayons.blue(c.out))
 
